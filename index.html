@@ -1,32 +1,40 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>historia de usuario</title>
-</head>
-<body>
-    <h1 class="text-3xl  font-bold underline text-center text-red-500" >Registrar Gasto</h1>
-    
-    <div class="flex flex-col gap-4 max-w-sm p-6 bg-white rounded-xl shadow">
-        <label for="gasto">nombre del gasto :</label>
-        <input type="text" id="gasto" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400  focus:border-transparent">
-          
-
-    <label for="tipo">tipo de gasto :</label>
-        <select id="tipo" name="tipo" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent bg-white">
-    <option value="ingreso">ingreso</option>
-    <option value="egreso">egreso</option>
-        </select>
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <title>historia de usuario</title>
+    </head>
+    <body>
+        <h1 class="text-3xl  font-bold underline text-center text-red-500" >Registrar Gasto</h1>
         
-        
-        <label for="monto">monto gastado :</label>
-        <input type="text" id="monto" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400  focus:border-transparent">
-        <button id="boton" class="
-        hover:bg-slate-700 rounded-md bg-indigo-600 px-2 py-1 text-white cursor-pointer transition-all">agregar</button>
-        </div>
+        <div class="flex flex-col gap-4 max-w-sm p-6 bg-white rounded-xl shadow">
+            <label for="gasto">nombre del gasto :</label>
+            <input type="text" id="gasto" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400  focus:border-transparent">
+            
 
-<script src="./app.js"></script>
-</body>
-</html>
+        <label for="tipo">tipo de gasto :</label>
+            <select id="tipo" name="tipo" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400 focus:border-transparent bg-white">
+        <option value="ingreso">ingreso</option>
+        <option value="egreso">egreso</option>
+            </select>
+            
+            
+            <label for="monto">monto gastado :</label>
+            <input type="text" id="monto" class="border-2 border-gray-200 rounded-md p-2 focus:outline-none focus:ring-4 focus:ring-green-400  focus:border-transparent">
+            <button id="boton" class="
+            hover:bg-slate-700 rounded-md bg-indigo-600 px-2 py-1 text-white cursor-pointer transition-all">agregar</button>
+            </div>
+<div class="max-w-sm p-4 mt-4 bg-gray-100 rounded-xl">
+    <h2 class="font-bold text-lg mb-2">Resumen Final</h2>
+    <p>Total de movimientos: <span id="cantidad">0</span></p>
+    <p>Saldo total: <span id="saldo">S/0</span></p>
+    <hr class="my-2">
+    <p class="font-semibold">Desglose por tipo:</p>
+    <p>- Ingresos: <span id="totalIngresos" class="text-green-600">S/0</span></p>
+    <p>- Egresos: <span id="totalEgresos" class="text-red-500">S/0</span></p>
+</div>
+    <script src="./app.js"></script>
+    </body>
+    </html>
