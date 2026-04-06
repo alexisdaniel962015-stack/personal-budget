@@ -1,8 +1,11 @@
 // En lugar de arrays simples, crearemos objetos con comportamientos
-const presupuesto = new Presupuesto();
-presupuesto.agregarMovimiento(new Movimiento('Salario', 'ingreso', 3000));
-presupuesto.agregarMovimiento(new Movimiento('Comida', 'gasto', 200));
-presupuesto.agregarMovimiento(new Movimiento('Freelance', 'ingreso', 500));
+const miPresupuesto = new Presupuesto();
+
+// Agregar varios movimientos
+miPresupuesto.agregarMovimiento(new Movimiento('Salario', 'ingreso', 3000));
+miPresupuesto.agregarMovimiento(new Movimiento('Freelance', 'ingreso', 500));
+miPresupuesto.agregarMovimiento(new Movimiento('Comida', 'gasto', 200));
+miPresupuesto.agregarMovimiento(new Movimiento('Transporte', 'gasto', 150));
  // Función constructora para Movimiento
 function Movimiento(nombre, tipo, valor) {
   // ✅ Usar this.propiedad para el estado
@@ -69,7 +72,24 @@ function Presupuesto() {
    this.obtenerMovimientosPorTipo = function(tipo) {
     return this.movimientos.filter(mov => mov.tipo === tipo);
   };
-}
+
+  this.eliminarMovimiento = function(indice) {
+  if (indice >= 0 && indice < this.movimientos.length) {
+    return this.movimientos.splice(indice, 1)[0];
+  }
+  return null;
+};
+// 3.2. Validación y Métodos Auxiliares
+// Agrega métodos de validación y utilidad:
+this.buscarMovimiento = function(nombre) {
+  return this.movimientos.find(mov => 
+    mov.nombre.toLowerCase().includes(nombre.toLowerCase())
+  );
+};
+
+this.validarPresupuesto = function() {
+  return this.movimientos.every(mov => mov instanceof Movimiento);
+};
 // Continúa en el constructor Presupuesto
 this.calcularBalance = function() {
   return this.obtenerTotalIngresos() - this.obtenerTotalGastos();
@@ -83,13 +103,10 @@ this.obtenerResumen = function() {
     cantidadMovimientos: this.movimientos.length
   };
 };
+}
 
-
-
-
-
-const ingresos = presupuesto.obtenerMovimientosPorTipo('ingreso');
-const gastos = presupuesto.obtenerMovimientosPorTipo('gasto');
+const ingresos = miPresupuesto.obtenerMovimientosPorTipo('ingreso');
+const gastos = miPresupuesto.obtenerMovimientosPorTipo('gasto');
 
 console.log('Ingresos:', ingresos);
 console.log('Gastos:', gastos);
