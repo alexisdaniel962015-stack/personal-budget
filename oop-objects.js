@@ -2,7 +2,7 @@
 const presupuesto = new Presupuesto();
 presupuesto.agregarMovimiento(new Movimiento('Salario', 'ingreso', 3000));
 presupuesto.agregarMovimiento(new Movimiento('Comida', 'gasto', 200));
-
+presupuesto.agregarMovimiento(new Movimiento('Freelance', 'ingreso', 500));
  // Función constructora para Movimiento
 function Movimiento(nombre, tipo, valor) {
   // ✅ Usar this.propiedad para el estado
@@ -66,4 +66,30 @@ function Presupuesto() {
       .filter(mov => mov.esGasto())
       .reduce((total, mov) => total + mov.valor, 0);
   };
+   this.obtenerMovimientosPorTipo = function(tipo) {
+    return this.movimientos.filter(mov => mov.tipo === tipo);
+  };
 }
+// Continúa en el constructor Presupuesto
+this.calcularBalance = function() {
+  return this.obtenerTotalIngresos() - this.obtenerTotalGastos();
+};
+
+this.obtenerResumen = function() {
+  return {
+    totalIngresos: this.obtenerTotalIngresos(),
+    totalGastos: this.obtenerTotalGastos(),
+    balance: this.calcularBalance(),
+    cantidadMovimientos: this.movimientos.length
+  };
+};
+
+
+
+
+
+const ingresos = presupuesto.obtenerMovimientosPorTipo('ingreso');
+const gastos = presupuesto.obtenerMovimientosPorTipo('gasto');
+
+console.log('Ingresos:', ingresos);
+console.log('Gastos:', gastos);
